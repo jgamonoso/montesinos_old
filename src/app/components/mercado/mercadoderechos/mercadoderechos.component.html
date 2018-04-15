@@ -1,0 +1,32 @@
+<h2>Derechos</h2>
+
+<table class="table table-striped table-bordered table-sm">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Equipo NBA</th>
+      <th scope="col">Posición</th>
+			<th scope="col">Equipo</th>
+			<th scope="col">Salario</th>
+      <th scope="col">Última temporada</th>
+      <th scope="col">Oferta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-default" *ngFor="let player of derechos; let i = index">
+      <td>{{ player.jugador.nombre }} {{player.jugador.apellido }}</td>
+      <td>{{ player.jugador.fkEquipoNba | equiponba }}</td>
+
+      <td *ngIf="player.jugador.posiciones[0] && !player.jugador.posiciones[1] && !player.jugador.posiciones[2]">{{ player.jugador.posiciones[0].nombre }}</td>
+      <td *ngIf="player.jugador.posiciones[0] && player.jugador.posiciones[1] && !player.jugador.posiciones[2]">{{ player.jugador.posiciones[0].nombre }}, {{ player.jugador.posiciones[1]?.nombre}}</td>
+      <td *ngIf="player.jugador.posiciones[0] && player.jugador.posiciones[1] && player.jugador.posiciones[2]">{{ player.jugador.posiciones[0].nombre }}, {{ player.jugador.posiciones[1]?.nombre}}, {{ player.jugador.posiciones[2]?.nombre}}</td>
+
+			<td>{{ player.jugador.fkEquipoNba | equipoliga }}</td>
+
+			<td>{{ player.derecho.salario }}</td>
+      <td>{{ player.derecho.temporadaFin.nombre }}</td>
+
+      <td>Hacer oferta</td>
+    </tr>
+  </tbody>
+</table>

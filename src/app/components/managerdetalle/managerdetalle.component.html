@@ -1,0 +1,328 @@
+
+<div *ngIf="manager.equipo?.nombre" class="container animated fadeIn">
+
+  <h2 [innerHtml]="manager.equipo?.nombre"></h2>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <ul class="list-group list-group-flush">
+          <li>Manager: {{manager.nombre}}</li>
+          <li>Orden waiver: {{manager.equipo?.waiver}}</li>
+          <li>Cap Libre: {{manager.equipo?.capLibre}}</li>
+          <li>Num. jugadores: {{ manager.equipo?.jugadoresConContrato.length }}</li>
+          <li>Adds disponibles: {{ manager.equipo?.numMovesDisponibles }}</li>
+        </ul>
+      </div>
+      <div class="col-sm">
+        <table class="table-sm">
+          <tbody>
+            <tr class="table-default" *ngFor="let titulo of manager.equipo?.palmares">
+              <td>{{ titulo.logro }} ({{titulo.temporada.nombre }})</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-sm">
+        <table class="table-sm">
+          <tbody>
+            <tr class="table-default" *ngFor="let record of manager.equipo?.records">
+              <td>{{ record.categoria.nombre }}: {{record.temporada.nombre }} ({{record.valor }})</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <h4>Roster</h4>
+  <table class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Equipo</th>
+        <th scope="col">Posición</th>
+        <th scope="col">{{ proximasTemporadas[0]?.nombre }}</th>
+        <th scope="col">{{ proximasTemporadas[1]?.nombre }}</th>
+        <th scope="col">{{ proximasTemporadas[2]?.nombre }}</th>
+        <th scope="col">{{ proximasTemporadas[3]?.nombre }}</th>
+        <th scope="col">IL</th>
+        <th scope="col">Trading Block</th>
+        <th scope="col">Drop</th>
+        <th scope="col">TRADE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-default" *ngFor="let player of manager.equipo?.jugadoresConContrato; let a = index">
+        <th scope="row">{{a+1}}</th>
+        <td>{{ player.jugador.nombre }} {{player.jugador.apellido }}</td>
+        <td>{{ player.jugador.fkEquipoNba | equiponba }}</td>
+
+        <td *ngIf="player.jugador.posiciones[0] && !player.jugador.posiciones[1] && !player.jugador.posiciones[2]">{{ player.jugador.posiciones[0].nombre }}</td>
+        <td *ngIf="player.jugador.posiciones[0] && player.jugador.posiciones[1] && !player.jugador.posiciones[2]">{{ player.jugador.posiciones[0].nombre }}, {{ player.jugador.posiciones[1]?.nombre}}</td>
+        <td *ngIf="player.jugador.posiciones[0] && player.jugador.posiciones[1] && player.jugador.posiciones[2]">{{ player.jugador.posiciones[0].nombre }}, {{ player.jugador.posiciones[1]?.nombre}}, {{ player.jugador.posiciones[2]?.nombre}}</td>
+
+        <td>{{ player.contrato.salario }}</td>
+
+        <td *ngIf="player.contrato.temporadaFin.pkTemporada >= proximasTemporadas[1]?.pkTemporada">{{ player.contrato.salario }}</td>
+        <td *ngIf="player.contrato.temporadaFin.pkTemporada < proximasTemporadas[1]?.pkTemporada"></td>
+
+        <td *ngIf="player.contrato.temporadaFin.pkTemporada >= proximasTemporadas[2]?.pkTemporada">{{ player.contrato.salario }}</td>
+        <td *ngIf="player.contrato.temporadaFin.pkTemporada < proximasTemporadas[2]?.pkTemporada"></td>
+
+        <td *ngIf="player.contrato.temporadaFin.pkTemporada >= proximasTemporadas[3]?.pkTemporada">{{ player.contrato.salario }}</td>
+        <td *ngIf="player.contrato.temporadaFin.pkTemporada < proximasTemporadas[3]?.pkTemporada"></td>
+
+        <td>Activar</td>
+
+        <td *ngIf="player.enTradingBlock == true">Si (quitar)</td>
+        <td *ngIf="player.enTradingBlock == false">No (añadir)</td>
+
+        <td *ngIf="manager.equipo.corteGratisHabilitado == 1">gratis</td>
+        <td *ngIf="player.contrato.salario < 2">gratis</td>
+        <td *ngIf="player.contrato.salario >= 2">{{ player.contrato.salario / 2 | number:'1.0-1' }}</td>
+
+        <td>proponer</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <!-- <br> -->
+
+
+  <h4 *ngIf="manager.equipo?.jugadoresIL">Lesionados</h4>
+  <table *ngIf="manager.equipo?.jugadoresIL" class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Equipo</th>
+        <th scope="col">Posición</th>
+        <th scope="col">{{ proximasTemporadas[0]?.nombre }}</th>
+        <th scope="col">{{ proximasTemporadas[1]?.nombre }}</th>
+        <th scope="col">{{ proximasTemporadas[2]?.nombre }}</th>
+        <th scope="col">{{ proximasTemporadas[3]?.nombre }}</th>
+        <th scope="col">RECUPERAR</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-active" *ngFor="let player of manager.equipo?.jugadoresIL; let b = index">
+        <th scope="row">{{b+1}}</th>
+        <td>{{ player.jugador.nombre }} {{player.jugador.apellido }}</td>
+        <td>{{ player.jugador.fkEquipoNba | equiponba }}</td>
+
+        <td *ngIf="player.jugador.posiciones[0] && !player.jugador.posiciones[1] && !player.jugador.posiciones[2]">{{ player.jugador.posiciones[0].nombre }}</td>
+        <td *ngIf="player.jugador.posiciones[0] && player.jugador.posiciones[1] && !player.jugador.posiciones[2]">{{ player.jugador.posiciones[0].nombre }}, {{ player.jugador.posiciones[1]?.nombre}}</td>
+        <td *ngIf="player.jugador.posiciones[0] && player.jugador.posiciones[1] && player.jugador.posiciones[2]">{{ player.jugador.posiciones[0].nombre }}, {{ player.jugador.posiciones[1]?.nombre}}, {{ player.jugador.posiciones[2]?.nombre}}</td>
+
+        <td>{{ player.contrato.salario }}</td>
+
+        <td *ngIf="player.contrato.temporadaFin.pkTemporada >= proximasTemporadas[1]?.pkTemporada">{{ player.contrato.salario }}</td>
+        <td *ngIf="player.contrato.temporadaFin.pkTemporada < proximasTemporadas[1]?.pkTemporada"></td>
+
+        <td *ngIf="player.contrato.temporadaFin.pkTemporada >= proximasTemporadas[2]?.pkTemporada">{{ player.contrato.salario }}</td>
+        <td *ngIf="player.contrato.temporadaFin.pkTemporada < proximasTemporadas[2]?.pkTemporada"></td>
+
+        <td *ngIf="player.contrato.temporadaFin.pkTemporada >= proximasTemporadas[3]?.pkTemporada">{{ player.contrato.salario }}</td>
+        <td *ngIf="player.contrato.temporadaFin.pkTemporada < proximasTemporadas[3]?.pkTemporada"></td>
+        <td>Recuperar</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <!-- <br> -->
+
+
+
+  <h4 *ngIf="manager.equipo?.jugadoresConDerecho">Derechos</h4>
+  <table *ngIf="manager.equipo?.jugadoresConDerecho" class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Equipo</th>
+        <th scope="col">Posición</th>
+        <th scope="col">{{ proximasTemporadas[0]?.nombre }}</th>
+        <th scope="col">{{ proximasTemporadas[1]?.nombre }}</th>
+        <th scope="col">Trading Block</th>
+        <th scope="col">Derecho</th>
+        <th scope="col">TRADE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-info" *ngFor="let player of manager.equipo?.jugadoresConDerecho; let c = index">
+        <th scope="row">{{c+1}}</th>
+        <td>{{ player.jugador.nombre }} {{player.jugador.apellido }}</td>
+        <td>{{ player.jugador.fkEquipoNba | equiponba }}</td>
+
+        <td *ngIf="player.jugador.posiciones[0] && !player.jugador.posiciones[1] && !player.jugador.posiciones[2]">{{ player.jugador.posiciones[0].nombre }}</td>
+        <td *ngIf="player.jugador.posiciones[0] && player.jugador.posiciones[1] && !player.jugador.posiciones[2]">{{ player.jugador.posiciones[0].nombre }}, {{ player.jugador.posiciones[1]?.nombre}}</td>
+        <td *ngIf="player.jugador.posiciones[0] && player.jugador.posiciones[1] && player.jugador.posiciones[2]">{{ player.jugador.posiciones[0].nombre }}, {{ player.jugador.posiciones[1]?.nombre}}, {{ player.jugador.posiciones[2]?.nombre}}</td>
+
+        <td>{{ player.derecho.salario }}</td>
+
+        <td *ngIf="player.derecho.temporadaFin.pkTemporada >= proximasTemporadas[1]?.pkTemporada">{{ player.derecho.salario }}</td>
+        <td *ngIf="player.derecho.temporadaFin.pkTemporada < proximasTemporadas[1]?.pkTemporada"></td>
+
+        <td *ngIf="player.enTradingBlock == true">Si (quitar)</td>
+        <td *ngIf="player.enTradingBlock == false">No (añadir)</td>
+
+        <td>ejercer</td>
+
+        <td>proponer</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <!-- <br> -->
+
+
+  <h4 *ngIf="manager.equipo?.jugadoresLesionados">OFS</h4>
+  <table *ngIf="manager.equipo?.jugadoresLesionados" class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Equipo</th>
+        <th scope="col">Posición</th>
+        <th scope="col">{{ proximasTemporadas[0]?.nombre }}</th>
+        <th scope="col">{{ proximasTemporadas[1]?.nombre }}</th>
+        <th scope="col">{{ proximasTemporadas[2]?.nombre }}</th>
+        <th scope="col">{{ proximasTemporadas[3]?.nombre }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-danger" *ngFor="let player of manager.equipo?.jugadoresLesionados; let d = index">
+        <th scope="row">{{d+1}}</th>
+        <td>{{ player.jugador.nombre }} {{player.jugador.apellido }}</td>
+        <td>{{ player.jugador.fkEquipoNba | equiponba }}</td>
+
+        <td *ngIf="player.jugador.posiciones[0] && !player.jugador.posiciones[1] && !player.jugador.posiciones[2]">{{ player.jugador.posiciones[0].nombre }}</td>
+        <td *ngIf="player.jugador.posiciones[0] && player.jugador.posiciones[1] && !player.jugador.posiciones[2]">{{ player.jugador.posiciones[0].nombre }}, {{ player.jugador.posiciones[1]?.nombre}}</td>
+        <td *ngIf="player.jugador.posiciones[0] && player.jugador.posiciones[1] && player.jugador.posiciones[2]">{{ player.jugador.posiciones[0].nombre }}, {{ player.jugador.posiciones[1]?.nombre}}, {{ player.jugador.posiciones[2]?.nombre}}</td>
+
+        <td>{{ player.contrato.salario }}</td>
+
+        <td *ngIf="player.contrato.temporadaFin.pkTemporada >= proximasTemporadas[1]?.pkTemporada">{{ player.contrato.salario }}</td>
+        <td *ngIf="player.contrato.temporadaFin.pkTemporada < proximasTemporadas[1]?.pkTemporada"></td>
+
+        <td *ngIf="player.contrato.temporadaFin.pkTemporada >= proximasTemporadas[2]?.pkTemporada">{{ player.contrato.salario }}</td>
+        <td *ngIf="player.contrato.temporadaFin.pkTemporada < proximasTemporadas[2]?.pkTemporada"></td>
+
+        <td *ngIf="player.contrato.temporadaFin.pkTemporada >= proximasTemporadas[3]?.pkTemporada">{{ player.contrato.salario }}</td>
+        <td *ngIf="player.contrato.temporadaFin.pkTemporada < proximasTemporadas[3]?.pkTemporada"></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+
+  <!-- <hr> -->
+
+
+
+
+
+  <h4 *ngIf="manager.equipo?.draftpicks">Draft Picks</h4>
+  <table *ngIf="manager.equipo?.draftpicks" class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Equipo original</th>
+        <th scope="col">Temporada</th>
+        <th scope="col">Ronda</th>
+        <th scope="col">Pick</th>
+        <th scope="col">Trading Block</th>
+        <th scope="col">TRADE</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-light" *ngFor="let pick of manager.equipo?.draftpicks; let e = index">
+        <th scope="row">{{e+1}}</th>
+        <td>{{ pick.fkEquipoOri | equipoliga }}</td>
+        <td>{{ pick.fkTemporada | nombretemporada }}</td>
+        <td>{{ pick.numRonda }}</td>
+        <td *ngIf="pick.numPick">{{ pick.numPick }}</td>
+        <td *ngIf="pick.numPick == null">?</td>
+
+        <td *ngIf="pick.enTradingBlock == true">Si (quitar)</td>
+        <td *ngIf="pick.enTradingBlock == false">No (añadir)</td>
+
+        <td>proponer</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+
+  <!-- <hr> -->
+
+
+
+
+  <h4 *ngIf="manager.equipo?.bonus">Bonus</h4>
+  <table *ngIf="manager.equipo?.bonus" class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Temporada</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Motivo</th>
+        <th scope="col">Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-success" *ngFor="let bonus of manager.equipo?.bonus; let g = index">
+        <th scope="row">{{g+1}}</th>
+        <td>{{ bonus.fkTemporada | nombretemporada  }}</td>
+        <td>{{ bonus.cantidad }}</td>
+        <td>{{ bonus.motivo }}</td>
+        <td>{{ bonus.fecha }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+
+  <!-- <hr> -->
+
+
+
+
+  <h4 *ngIf="manager.equipo?.sanciones">Sanciones</h4>
+  <table *ngIf="manager.equipo?.sanciones" class="table table-striped table-bordered table-sm">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Temporada</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Motivo</th>
+        <th scope="col">Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="table-warning" *ngFor="let sancion of manager.equipo?.sanciones; let f = index">
+        <th scope="row">{{f+1}}</th>
+        <td>{{ sancion.fkTemporada | nombretemporada  }}</td>
+        <td>{{ sancion.cantidad }}</td>
+        <td>{{ sancion.motivo }}</td>
+        <td>{{ sancion.fecha }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+</div>

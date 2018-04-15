@@ -1,0 +1,240 @@
+<h2>Apuestas</h2>
+
+<div class="row main-container">
+
+  <div class="col-md-4">
+    <h5>MVP</h5>
+    <table class="table table-striped table-bordered table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Equipo</th>
+          <th scope="col">Apuesta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-default" *ngFor="let equipo of equiposLiga; let i = index">
+          <td>{{ equipo.nombre }}</td>
+          <td>{{ equipo.apuesta.fkJugadorMVP }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+
+    <h5>Mejor Defensor</h5>
+    <table class="table table-striped table-bordered table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Equipo</th>
+          <th scope="col">Apuesta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-default" *ngFor="let equipo of equiposLiga; let i = index">
+          <td>{{ equipo.nombre }}</td>
+          <td>{{ equipo.apuesta.fkJugadorDefensor }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+
+    <h5>Peor Equipo NBA</h5>
+    <table class="table table-striped table-bordered table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Equipo</th>
+          <th scope="col">Apuesta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-default" *ngFor="let equipo of equiposLiga; let i = index">
+          <td>{{ equipo.nombre }}</td>
+          <td>{{ equipo.apuesta.fkEquiponbaPeor | equiponba }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+
+    <h5>Campeón RS MNBA</h5>
+    <table class="table table-striped table-bordered table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Equipo</th>
+          <th scope="col">Apuesta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-default" *ngFor="let equipo of equiposLiga; let i = index">
+          <td>{{ equipo.nombre }}</td>
+          <td>{{ equipo.apuesta.fkEquipoRegular |equipoliga }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+
+    <h5>Campeón Supercopa Montesina</h5>
+    <table class="table table-striped table-bordered table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Equipo</th>
+          <th scope="col">Apuesta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-default" *ngFor="let equipo of equiposLiga; let i = index">
+          <td>{{ equipo.nombre }}</td>
+          <td>{{ equipo.apuesta.fkEquipoSupercopa |equipoliga }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="col-md-4">
+    <h5>Rookie del año</h5>
+    <table class="table table-striped table-bordered table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Equipo</th>
+          <th scope="col">Apuesta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-default" *ngFor="let equipo of equiposLiga; let i = index">
+          <td>{{ equipo.nombre }}</td>
+          <td>{{ equipo.apuesta.fkJugadorROY }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+
+    <h5>Mejor Entrenador</h5>
+    <table class="table table-striped table-bordered table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Equipo</th>
+          <th scope="col">Apuesta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-default" *ngFor="let equipo of equiposLiga; let i = index">
+          <td>{{ equipo.nombre }}</td>
+          <td>{{ equipo.apuesta.fkEntrenador }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+
+    <h5>Campeón MNBA</h5>
+    <table class="table table-striped table-bordered table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Equipo</th>
+          <th scope="col">Apuesta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-default" *ngFor="let equipo of equiposLiga; let i = index">
+          <td>{{ equipo.nombre }}</td>
+          <td>{{ equipo.apuesta.fkEquipoCampeon | equipoliga }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+
+    <h5>Peor franquicia MNBA</h5>
+    <table class="table table-striped table-bordered table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Equipo</th>
+          <th scope="col">Apuesta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-default" *ngFor="let equipo of equiposLiga; let i = index">
+          <td>{{ equipo.nombre }}</td>
+          <td>{{ equipo.apuesta.fkEquipoPeor |equipoliga }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="col-md-4">
+    <h5>Sexto Hombre</h5>
+    <table class="table table-striped table-bordered table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Equipo</th>
+          <th scope="col">Apuesta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-default" *ngFor="let equipo of equiposLiga; let i = index">
+          <td>{{ equipo.nombre }}</td>
+          <td>{{ equipo.apuesta.fkJugadorSexto }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+
+    <h5>Campeón NBA</h5>
+    <table class="table table-striped table-bordered table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Equipo</th>
+          <th scope="col">Apuesta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-default" *ngFor="let equipo of equiposLiga; let i = index">
+          <td>{{ equipo.nombre }}</td>
+          <td>{{ equipo.apuesta.fkEquiponbaCampeon | equiponba }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+
+    <h5>Finalista MNBA</h5>
+    <table class="table table-striped table-bordered table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Equipo</th>
+          <th scope="col">Apuesta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-default" *ngFor="let equipo of equiposLiga; let i = index">
+          <td>{{ equipo.nombre }}</td>
+          <td>{{ equipo.apuesta.fkEquipoFinalista |equipoliga }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <br>
+
+    <h5>Campeón Copa Montesina</h5>
+    <table class="table table-striped table-bordered table-sm">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Equipo</th>
+          <th scope="col">Apuesta</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table-default" *ngFor="let equipo of equiposLiga; let i = index">
+          <td>{{ equipo.nombre }}</td>
+          <td>{{ equipo.apuesta.fkEquipoCopa |equipoliga }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

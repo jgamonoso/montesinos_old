@@ -1,0 +1,25 @@
+<h2>Draft Picks</h2>
+
+<table class="table table-striped table-bordered table-sm">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Equipo actual</th>
+      <th scope="col">Equipo original</th>
+      <th scope="col">Temporada</th>
+			<th scope="col">Ronda</th>
+			<th scope="col">Pick</th>
+      <th scope="col">Oferta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-default" *ngFor="let drafPick of drafPicks; let i = index">
+      <td>{{ drafPick.fkEquipoDest | equipoliga }}</td>
+      <td>{{ drafPick.fkEquipoOri | equipoliga }}</td>
+
+      <td>{{ drafPick.fkTemporada | nombretemporada }}</td>
+      <td>{{ drafPick.numRonda }}</td>
+      <td>{{ drafPick.numPick }}</td>
+      <td>Hacer oferta</td>
+    </tr>
+  </tbody>
+</table>

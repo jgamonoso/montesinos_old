@@ -1,0 +1,94 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <a class="navbar-brand" href="#">
+    <img src="assets/img/ball.png" width="30" height="30" alt="">
+  </a>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <!-- <li class="nav-item active">-->
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['home']">Inicio</a>
+      </li>
+
+      <!-- <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['managerdetalle',18]">Mi equipo</a>
+      </li> -->
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Onuba Bombers
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+          <a class="dropdown-item" [routerLink]="['managerdetalle', 18]">Mi equipo</a>
+
+          <div class="dropdown-divider"></div>
+
+          <a class="dropdown-item" [routerLink]="['ofertasenviadas']">Ofertas enviadas</a>
+
+          <a class="dropdown-item" [routerLink]="['ofertasrecibidas']">Ofertas recibidas</a>
+
+          <div class="dropdown-divider"></div>
+
+          <a class="dropdown-item" [routerLink]="['pujasactivas']">Pujas activas</a>
+
+          <a class="dropdown-item" [routerLink]="['waivers']">Waivers</a>
+
+          <div class="dropdown-divider"></div>
+
+          <a class="dropdown-item" [routerLink]="['lesionados', 18]">Lesionados</a>
+
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Liga
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['noticias',1]">Noticias</a>
+          <a class="dropdown-item" [routerLink]="['managerlista']">Equipos</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" [routerLink]="['apuestaslista']">Apuestas</a>
+          <a class="dropdown-item" [routerLink]="['historico']">Histórico</a>
+          <a class="dropdown-item" [routerLink]="['normativa']">Normativa</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Ir a D-League</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Mercado
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['mercadojugadores']">Jugadores</a>
+          <a class="dropdown-item" [routerLink]="['mercadoderechos']">Derechos</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" [routerLink]="['mercadodraftpicks']">Draft Picks</a>
+          <a class="dropdown-item" [routerLink]="['mercadotradingblock']">Trading Block</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          AL Temporada
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['agencialibre']">Jugadores</a>
+        </div>
+      </li>
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Buscar jugador" aria-label="Search">
+      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
+  </div>
+</nav>
