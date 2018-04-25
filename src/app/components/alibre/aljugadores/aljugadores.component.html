@@ -1,0 +1,48 @@
+<p>
+  aljugadores works!
+</p>
+
+
+
+<h2>Agencia Libre</h2>
+
+<table class="table table-striped table-bordered table-sm">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Nombre</th>
+      <th scope="col">Equipo NBA</th>
+      <th scope="col">Posición</th>
+      <th scope="col">Waiver</th>
+      <th scope="col">Fin Waiver</th>
+      <th scope="col">Puja Max (CR)</th>
+      <th scope="col">Equipo</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Fecha Fin</th>
+      <th scope="col">Pujas rest.</th>
+      <th scope="col">Pujar</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="table-default" *ngFor="let player of jugadoresALibre; let i = index">
+      <td>{{ player.jugador.nombre }} {{player.jugador.apellido }}</td>
+      <td>{{ player.jugador.fkEquipoNba | equiponba }}</td>
+
+      <td *ngIf="player.jugador.posiciones[0] && !player.jugador.posiciones[1] && !player.jugador.posiciones[2]">{{ player.jugador.posiciones[0].nombre }}</td>
+      <td *ngIf="player.jugador.posiciones[0] && player.jugador.posiciones[1] && !player.jugador.posiciones[2]">{{ player.jugador.posiciones[0].nombre }}, {{ player.jugador.posiciones[1]?.nombre}}</td>
+      <td *ngIf="player.jugador.posiciones[0] && player.jugador.posiciones[1] && player.jugador.posiciones[2]">{{ player.jugador.posiciones[0].nombre }}, {{ player.jugador.posiciones[1]?.nombre}}, {{ player.jugador.posiciones[2]?.nombre}}</td>
+
+      <td *ngIf="player.waiver!=null">Si</td>
+      <td *ngIf="player.waiver==null">No</td>
+
+      <td *ngIf="player.waiver!=null">{{ player.waiver.fechaFin }}</td>
+      <td *ngIf="player.waiver==null">-</td>
+
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>

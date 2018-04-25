@@ -1,28 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import "rxjs/add/operator/map";
+// import "rxjs/add/operator/map";
 
 @Injectable()
 export class ManagerService {
 
-  //managers: Manager[] = [];
-  //managers: any[] = [];
-  //proximasTemporadas: any[] = [];
-  //listaAL: any[] = [];
-  //private manager: Manager = {};
-  //private equipo:any = {};
+  // managers: Manager[] = [];
+  // managers: any[] = [];
+  // proximasTemporadas: any[] = [];
+  // listaAL: any[] = [];
+  // private manager: Manager = {};
+  // private equipo:any = {};
 
 
-  constructor(public _http:HttpClient) {
-    console.log("Constructor de Servicio listo.");
+  constructor(public _http: HttpClient) {
+    console.log('Constructor de Servicio listo.');
   }
 
-  getListaManagers(){
+  getListaManagers() {
 
     let pkLiga = 1;
 
     let url = `http://localhost/api/gestores/gestormanager.php?allManagers=yes&pkLiga=${ pkLiga }`;
-    //console.log("Entramos en getListaManagers");
+    // console.log("Entramos en getListaManagers");
     return this._http.get( url );
     // return this._http.get( url )
     //       .map( ( resp: any ) => {
@@ -37,17 +37,17 @@ export class ManagerService {
               // });
   }
 
-  getManager( idx: number ){
+  getManager( idx: number ) {
 
-    //let url = 'http://localhost/api/gestores/gestormanagerb.php';
+    // let url = 'http://localhost/api/gestores/gestormanagerb.php';
     let url = `http://localhost/api/gestores/gestormanager.php?allManagers=no&pkManager=${ idx }`;
     return this._http.get( url );
 
   }
 
-  getProximasTemporadas(){
+  getProximasTemporadas() {
     let url = `http://localhost/api/gestores/gestortemporadaB.php`;
-    //console.log("Entramos en getListaManagers");
+    // console.log("Entramos en getListaManagers");
     return this._http.get( url );
           // .map( ( resp: any ) => {
           //   this.proximasTemporadas = resp;
@@ -55,12 +55,12 @@ export class ManagerService {
           // });
   }
 
-  getListaJugadoresAgenciaLibre(){
+  getListaJugadoresAgenciaLibre() {
 
     let pkLiga = 1;
 
     let url = `http://localhost/api/gestores/gestorjugadorligaB.php?mercado=AL&pkLiga=${ pkLiga }`;
-    //console.log("Entramos en getListaManagers");
+    // console.log("Entramos en getListaManagers");
     return this._http.get( url );
           // .map( ( resp: any ) => {
           //   this.listaAL = resp;
@@ -69,44 +69,44 @@ export class ManagerService {
   }
 
 
-  getListaJugadoresConContrato(){
+  getListaJugadoresConContrato() {
     let pkLiga = 1;
     let url = `http://localhost/api/gestores/gestorjugadorligaB.php?mercado=CC&pkLiga=${ pkLiga }`;
     return this._http.get( url );
   }
 
-  getListaJugadoresConDerecho(){
+  getListaJugadoresConDerecho() {
     let pkLiga = 1;
     let url = `http://localhost/api/gestores/gestorjugadorligaB.php?mercado=DE&pkLiga=${ pkLiga }`;
     return this._http.get( url );
   }
 
-  getListaDraftPicks(){
+  getListaDraftPicks() {
     let pkLiga = 1;
     let url = `http://localhost/api/gestores/gestorjugadorligaB.php?mercado=DP&pkLiga=${ pkLiga }`;
     return this._http.get( url );
   }
 
 //////////////////////////////
-  getListaJugadoresConContratoTradingBlock(){
+  getListaJugadoresConContratoTradingBlock() {
     let pkLiga = 1;
     let url = `http://localhost/api/gestores/gestorjugadorligaB.php?mercado=no&trading=CC&pkLiga=${ pkLiga }`;
     return this._http.get( url );
   }
 
-  getListaJugadoresConDerechoTradingBlock(){
+  getListaJugadoresConDerechoTradingBlock() {
     let pkLiga = 1;
     let url = `http://localhost/api/gestores/gestorjugadorligaB.php?mercado=no&trading=DE&pkLiga=${ pkLiga }`;
     return this._http.get( url );
   }
 
-  getListaDraftPicksTradingBlock(){
+  getListaDraftPicksTradingBlock() {
     let pkLiga = 1;
     let url = `http://localhost/api/gestores/gestordraftpickB.php?mercado=no&trading=DP&pkLiga=${ pkLiga }`;
     return this._http.get( url );
   }
 
-  // getEquipoNba( idx: number ){
+  // getEquipoNba( idx: number ) {
   //
   //   //let url = 'http://localhost/api/gestores/gestormanagerb.php';
   //   let url = `http://localhost/api/gestores/gestorequiponba.php?fkEquipoNba=${ idx }`;
@@ -115,7 +115,7 @@ export class ManagerService {
   //
   // }
 
-  getNoticias( idx: number ){
+  getNoticias( idx: number ) {
 
     //TODO: cambiar el valor de semana a 1;
     let semana = 14;
@@ -126,7 +126,7 @@ export class ManagerService {
 
   }
 
-  getObtenerListaEquiposLiga(){
+  getObtenerListaEquiposLiga() {
     let pkLiga = 1;
 
     let url = `http://localhost/api/gestores/gestorequipoB.php?pkLiga=${ pkLiga }`;
@@ -134,7 +134,7 @@ export class ManagerService {
 
   }
 
-  getObtenerPalmaresLiga(){
+  getObtenerPalmaresLiga() {
     let pkLiga = 1;
 
     let url = `http://localhost/api/gestores/gestorpalmaresB.php?pkLiga=${ pkLiga }`;
@@ -142,7 +142,7 @@ export class ManagerService {
 
   }
 
-  getObtenerRecordsLiga(){
+  getObtenerRecordsLiga() {
     let pkLiga = 1;
 
     let url = `http://localhost/api/gestores/gestorrecordB.php?pkLiga=${ pkLiga }`;

@@ -1,0 +1,28 @@
+<h2>Managers <small>MNBA</small></h2>
+<hr>
+
+<div class="card-columns">
+
+  <div class="card animated fadeIn fast" *ngFor="let manager of managers; let i = index">
+    <!--<img class="card-img-top" [src]="equipo.logo" [alt]="equipo.manager_login">-->
+    <div class="card-body">
+      <h4 class="card-title" [innerHtml]="manager.equipo.nombre"></h4>
+      <p class="card-text">
+        Manager: {{ manager.nombre }}
+        <br>
+        Jugadores: {{ manager.equipo.jugadoresConContrato.length }}
+        <br>
+        Cap Libre: {{ manager.equipo.capLibre }}
+      </p>
+      <p class="card-text"><small class="text-muted">Waiver: {{ manager.equipo.waiver }}</small></p>
+
+      <!--<button (click) = "verEquipo( manager.pkManager )"
+        type="button" class="btn btn-outline-primary btn-block">
+        Ver más...
+      </button>-->
+      <a [routerLink]="['/equipodetalle', manager.pkManager ]" class="btn btn-outline-primary btn-block">Ver ficha del manager</a>
+
+    </div>
+  </div>
+
+</div>

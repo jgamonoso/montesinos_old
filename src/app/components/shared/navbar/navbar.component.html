@@ -4,7 +4,8 @@
     <img src="assets/img/ball.png" width="30" height="30" alt="">
   </a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+   aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
@@ -21,39 +22,28 @@
       </li> -->
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Onuba Bombers
-        </a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+         aria-expanded="false">Onuba Bombers</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-          <a class="dropdown-item" [routerLink]="['managerdetalle', 18]">Mi equipo</a>
-
+          <a class="dropdown-item" [routerLink]="['equipodetalle', 18]">Mi equipo</a>
           <div class="dropdown-divider"></div>
-
           <a class="dropdown-item" [routerLink]="['ofertasenviadas']">Ofertas enviadas</a>
-
           <a class="dropdown-item" [routerLink]="['ofertasrecibidas']">Ofertas recibidas</a>
-
           <div class="dropdown-divider"></div>
-
           <a class="dropdown-item" [routerLink]="['pujasactivas']">Pujas activas</a>
-
           <a class="dropdown-item" [routerLink]="['waivers']">Waivers</a>
-
           <div class="dropdown-divider"></div>
-
           <a class="dropdown-item" [routerLink]="['lesionados', 18]">Lesionados</a>
-
+          <a class="dropdown-item" [routerLink]="['apuestas']">Apuestas</a>
         </div>
       </li>
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Liga
-        </a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+         aria-expanded="false">Liga</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" [routerLink]="['noticias',1]">Noticias</a>
-          <a class="dropdown-item" [routerLink]="['managerlista']">Equipos</a>
+          <a class="dropdown-item" [routerLink]="['equipolista']">Equipos</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" [routerLink]="['apuestaslista']">Apuestas</a>
           <a class="dropdown-item" [routerLink]="['historico']">Histórico</a>
@@ -64,9 +54,8 @@
       </li>
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Mercado
-        </a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+         aria-expanded="false">Mercado</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" [routerLink]="['mercadojugadores']">Jugadores</a>
           <a class="dropdown-item" [routerLink]="['mercadoderechos']">Derechos</a>
@@ -77,18 +66,80 @@
       </li>
 
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          AL Temporada
-        </a>
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">Renovaciones</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" [routerLink]="['agencialibre']">Jugadores</a>
+          <a class="dropdown-item" [routerLink]="['rjugadores']">Jugadores</a>
+          <a class="dropdown-item" [routerLink]="['rpujasactivas']">Pujas activas (x)</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+         aria-expanded="false">Agencia Libre</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['aljugadores']">Jugadores</a>
+          <a class="dropdown-item" [routerLink]="['alseasonjugadores']">Jugadores</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" [routerLink]="['aloffseasonjugadores']">Jugadores</a>
+          <a class="dropdown-item" [routerLink]="['aloffseasonpujasactivas']">Pujas activas (y)</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">Draft</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['draft']">Draft</a>
+        </div>
+      </li>
+      
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+         aria-expanded="false">Comisionado</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['cliga']">Liga</a>
+          <a class="dropdown-item" [routerLink]="['cequipos']">Equipos</a>
+          <a class="dropdown-item" [routerLink]="['cjugadores']">Jugadores</a>
+          <a class="dropdown-item" [routerLink]="['cdraft']">Draft</a>
+          <a class="dropdown-item" [routerLink]="['ctrades']">Trades</a>
+          <a class="dropdown-item" [routerLink]="['csubastas']">Subastas</a>
+          <a class="dropdown-item" [routerLink]="['cwaivers']">Waivers</a>
+          <a class="dropdown-item" [routerLink]="['csanciones']">Sanciones</a>
+          <a class="dropdown-item" [routerLink]="['cbonus']">Bonus</a>
+          <a class="dropdown-item" [routerLink]="['cnoticias']">Noticas</a>
+          <a class="dropdown-item" [routerLink]="['cmatchup']">Matchup</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">Administrador</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="['managerlista']">Managers</a>
+          <a class="dropdown-item" [routerLink]="['equiposabrlista']">Equipos</a>
+          <a class="dropdown-item" [routerLink]="['parametroslista']">Parámetros Liga</a>
         </div>
       </li>
 
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Buscar jugador" aria-label="Search">
-      <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Buscar</button>
-    </form>
+
+    <span class="navbar">
+      <button (click)="login()"
+          type="button"
+          class="btn btn-success brn-margin btn-sm">Login</button>
+
+      <button (click)="logout()"
+          type="button"
+          class="btn btn-danger brn-margin btn-sm">Salir</button>
+    </span>
+
+    <span class="navbar">
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2 btn-sm" type="search" placeholder="Buscar jugador" aria-label="Search">
+        <button class="btn btn-outline-secondary my-2 my-sm-0 btn-sm" type="submit">Buscar</button>
+      </form>
+    </span>
   </div>
 </nav>
