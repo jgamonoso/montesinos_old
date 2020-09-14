@@ -25,6 +25,7 @@ export class EquipodetalleComponent implements OnInit {
           this._manager.getManager( id ) // devuelve el manager
               .map((resp: any) => resp)
               .subscribe( manager => {
+                debugger;
                 this.manager = manager;
                 console.log( this.manager );
               });

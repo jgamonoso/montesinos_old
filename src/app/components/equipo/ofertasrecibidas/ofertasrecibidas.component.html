@@ -1,3 +1,77 @@
-<p>
-  ofertasrecibidas works!
-</p>
+<h2>Ofertas recibidas</h2>
+
+<div *ngFor="let oferta of ofertasRecibidas">
+  <div class="row main-container">
+
+    <div class="col-md-6" style="border:1px solid">
+      <h5 style="text-decoration: underline">{{oferta.fkEquipo2 | equipoliga }}</h5>
+      <div>
+        <h6>Jugadores</h6>
+        <dl *ngIf="oferta.jugadoresConContrato2!=null && oferta.jugadoresConContrato2.length > 0" class="list-group list-group-flush">
+          <li *ngFor="let player of oferta.jugadoresConContrato2">
+            {{ player.jugador.nombre }} {{player.jugador.apellido }} - {{ player.contrato.salario }}M hasta {{ player.contrato.temporadaFin.nombre
+            }}
+          </li>
+        </dl>
+      </div>
+    
+      <br>
+    
+      <div>
+        <h6>Derechos</h6>
+        <dl *ngIf="oferta.jugadoresConDerecho2!=null && oferta.jugadoresConDerecho2.length > 0" class="list-group list-group-flush">
+          <li *ngFor="let derecho of oferta.jugadoresConDerecho2">
+            HACERRRR!!!
+          </li>
+        </dl>
+      </div>
+    
+      <br>
+    
+      <div>
+        <h6>Draft Picks</h6>
+        <dl *ngIf="oferta.draftpicks2!=null && oferta.draftpicks2.length > 0" class="list-group list-group-flush">
+          <li *ngFor="let pick of oferta.draftpicks2">
+            {{ pick.numRonda }}a {{pick.fkTemporada | nombretemporada }} de {{ pick.fkEquipoOri | equipoliga }}
+          </li>
+        </dl>
+      </div>
+    </div>
+
+    
+    <div class="col-md-6" style="border:1px solid">
+      <h5 style="text-decoration: underline">{{ oferta.fkEquipo1 | equipoliga }}</h5>
+      <div>
+        <h6>Jugadores</h6>
+        <dl *ngIf="oferta.jugadoresConContrato1!=null && oferta.jugadoresConContrato1.length > 0" class="list-group list-group-flush">
+          <li *ngFor="let player of oferta.jugadoresConContrato1">
+            {{ player.jugador.nombre }} {{player.jugador.apellido }} - {{ player.contrato.salario }}M hasta {{ player.contrato.temporadaFin.nombre
+            }}
+          </li>
+        </dl>
+      </div>
+
+      <br>
+
+      <div>
+        <h6>Derechos</h6>
+        <dl *ngIf="oferta.jugadoresConDerecho1!=null && oferta.jugadoresConDerecho1.length > 0" class="list-group list-group-flush">
+          <li *ngFor="let derecho of oferta.jugadoresConDerecho1">
+            HACERRRR!!!
+          </li>
+        </dl>
+      </div>
+
+      <br>
+
+      <div>
+        <h6>Draft Picks</h6>
+        <dl *ngIf="oferta.draftpicks1!=null && oferta.draftpicks1.length > 0" class="list-group list-group-flush">
+          <li *ngFor="let pick of oferta.draftpicks1">
+            {{ pick.numRonda }}a {{pick.fkTemporada | nombretemporada }} de {{ pick.fkEquipoOri | equipoliga }}
+          </li>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 
 // Rutas
@@ -21,6 +22,7 @@ import { NombretemporadaPipe } from './pipes/nombretemporada.pipe';
 // Componentes
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 
 // Componentes equipo
 import { EquipodetalleComponent } from './components/equipo/equipodetalle/equipodetalle.component';
@@ -81,6 +83,7 @@ import { ParametroslistaComponent } from './components/admin/parametroslista/par
     CabeceraComponent,
     NavbarComponent,
     FooterComponent,
+    LoginComponent,
     HomeComponent,
 
     EquiponbaPipe,
@@ -132,7 +135,13 @@ import { ParametroslistaComponent } from './components/admin/parametroslista/par
     EquiposabrlistaComponent,
     ParametroslistaComponent
   ],
-  imports: [BrowserModule, APP_ROUTING, HttpClientModule],
+  imports: [
+    BrowserModule,
+    APP_ROUTING,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   providers: [ManagerService],
   bootstrap: [AppComponent]
 })

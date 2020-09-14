@@ -3,8 +3,7 @@ import { ManagerService } from '../../../services/manager.service';
 
 @Component({
   selector: 'app-historico',
-  templateUrl: './historico.component.html',
-  styles: []
+  templateUrl: './historico.component.html'
 })
 export class HistoricoComponent implements OnInit {
 
@@ -13,10 +12,10 @@ export class HistoricoComponent implements OnInit {
 
   historicoRecords: any[] = [];
 
-  constructor( private _manager:ManagerService ) {
+  constructor( private _manager: ManagerService ) {
 
     this._manager.getObtenerPalmaresLiga()
-        .map((resp:any)=> resp)
+        .map((resp: any) => resp)
         .subscribe( palmares  => {
           this.historicoPalmares = palmares;
           console.log( this.historicoPalmares );
@@ -34,14 +33,11 @@ export class HistoricoComponent implements OnInit {
         });
 
     this._manager.getObtenerRecordsLiga()
-        .map((resp:any)=> resp)
+        .map((resp: any) => resp)
         .subscribe( records  => {
           this.historicoRecords = records;
           console.log( this.historicoRecords );
         });
-
-
-
   }
 
   ngOnInit() {

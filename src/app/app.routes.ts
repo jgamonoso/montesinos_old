@@ -1,7 +1,6 @@
-
 import { RouterModule, Routes } from '@angular/router';
-
 import { HomeComponent } from './components/home/home.component';
+import { LoginComponent } from './components/login/login.component';
 
 // equipo
 import { EquipodetalleComponent } from './components/equipo/equipodetalle/equipodetalle.component';
@@ -58,6 +57,7 @@ import { ParametroslistaComponent } from './components/admin/parametroslista/par
 
 const APP_ROUTES: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
 
   { path: 'equipodetalle/:id', component: EquipodetalleComponent },
   { path: 'ofertasenviadas', component: OfertasenviadasComponent },

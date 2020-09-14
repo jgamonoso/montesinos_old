@@ -93,11 +93,12 @@
           <a class="dropdown-item" [routerLink]="['draft']">Draft</a>
         </div>
       </li>
-      
+    </ul>
 
+    <ul class="navbar-nav mx-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-         aria-expanded="false">Comisionado</a>
+          aria-expanded="false">Comisionado</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" [routerLink]="['cliga']">Liga</a>
           <a class="dropdown-item" [routerLink]="['cequipos']">Equipos</a>
@@ -122,11 +123,10 @@
           <a class="dropdown-item" [routerLink]="['parametroslista']">Parámetros Liga</a>
         </div>
       </li>
-
     </ul>
 
     <span class="navbar">
-      <button (click)="login()"
+      <button [routerLink]="['login']"
           type="button"
           class="btn btn-success brn-margin btn-sm">Login</button>
 
@@ -135,11 +135,11 @@
           class="btn btn-danger brn-margin btn-sm">Salir</button>
     </span>
 
-    <span class="navbar">
+    <!--<span class="navbar">
       <form class="form-inline my-2 my-lg-0">
         <input class="form-control mr-sm-2 btn-sm" type="search" placeholder="Buscar jugador" aria-label="Search">
         <button class="btn btn-outline-secondary my-2 my-sm-0 btn-sm" type="submit">Buscar</button>
       </form>
-    </span>
+    </span>-->
   </div>
 </nav>
